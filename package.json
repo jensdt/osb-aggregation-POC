@@ -8,8 +8,7 @@
         "express": "4.x",
         "mongoose": "3.8.x",
         "body-parser": "1.4.3",
-        "restify": "2.8.1",
-        "osb-api": "0.0.1"
+        "restify": "2.8.1"
     },
     "engines": {
         "node": "0.10.x"
