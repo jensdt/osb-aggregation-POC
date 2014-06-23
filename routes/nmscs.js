@@ -8,7 +8,6 @@ exports.findAll = function (req, res) {
     Nmsc.find(function (err, nmscs, count) {
         res.send(nmscs);
     });
-
 };
 
 exports.findById = function (req, res) {
