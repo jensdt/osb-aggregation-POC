@@ -2,6 +2,7 @@ require('./db');
 
 var express = require('express'),
     bodyParser = require('body-parser'),
+    countries = require('./routes/countries'),
     nmscs = require('./routes/nmscs');
 
 var app = express();
@@ -14,6 +15,9 @@ app.get('/nmscs/:id', nmscs.findById);
 app.post('/nmscs', nmscs.addNmsc);
 app.put('/nmscs/:id', nmscs.updateNmsc);
 app.delete('/nmscs/:id', nmscs.deleteNmsc);
+
+app.get('/countries/:id', countries.getCountry);
+
 
 var port = Number(process.env.PORT || 3000);
 
