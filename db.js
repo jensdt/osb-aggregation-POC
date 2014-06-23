@@ -10,4 +10,4 @@ var NmscSchema = new Schema({
 });
 
 mongoose.model( 'Nmsc', NmscSchema );
-mongoose.connect( 'mongodb://localhost/express' );
+mongoose.connect( 'mongodb://osb:osb@ds063168.mongolab.com:63168/osb-aggregation' );
