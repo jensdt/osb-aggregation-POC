@@ -1,6 +1,6 @@
 {
-    "name": "express-api",
-    "description": "Express Application",
+    "name": "osb-aggregation-poc",
+    "description": "OSB Aggregation POC",
     "main": "server.js",
     "version": "0.0.1",
     "private": true,
