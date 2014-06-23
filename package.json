@@ -9,8 +9,7 @@
         "mongoose": "3.8.x",
         "body-parser": "1.4.3",
         "restify": "2.8.1",
-        "osb-api": "0.0.1",
-        "private-repo": "git+ssh://git@github.com:roexber/osb-aggregation-POC.git"
+        "osb-api": "0.0.1"
     },
     "engines": {
         "node": "0.10.x"
