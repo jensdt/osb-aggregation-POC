@@ -1,0 +1,15 @@
+{
+    "name": "express-api",
+    "description": "Express Application",
+    "main": "server.js",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "express": "4.x",
+        "mongoose": "latest",
+        "body-parser": "latest"
+    },
+    "engines": {
+        "node": "0.10.x"
+    }
+}
