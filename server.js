@@ -3,7 +3,7 @@ require('./db');
 var express = require('express'),
     bodyParser = require('body-parser'),
     countries = require('./routes/countries'),
-    nmscs = require('./routes/nmscs')
+    nmscs = require('./routes/nmscs'),
     api = require('osb-api');
 
 var app = express();
