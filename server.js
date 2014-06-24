@@ -18,8 +18,8 @@ app.delete('/nmscs/:id', nmscs.deleteNmsc);
 
 app.get('/countries/:id', countries.getCountry);
 
-/*var api = require('osb-api');
-app.get('/api', api.sayHello);*/
+var api = require('osb-api');
+/*app.get('/api', api.sayHello);*/
 
 var port = Number(process.env.PORT || 3000);
 
