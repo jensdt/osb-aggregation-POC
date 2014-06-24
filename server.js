@@ -6,14 +6,14 @@ var express = require('express'),
     winston = require("winston"),
     nmscs = require('./routes/nmscs');
 
-winston.handleExceptions(new winston.transports.File({ filename: 'logs/exceptions.log' }))
+/*winston.handleExceptions(new winston.transports.File({ filename: 'logs/exceptions.log' }))
 
 var logger = new (winston.Logger)({
     transports: [
         new (winston.transports.Console)(),
         new (winston.transports.File)({ filename: 'logs/osb-aggregation.log' })
     ]
-});
+});*/
 
 var app = express();
 
@@ -39,4 +39,4 @@ app.get('/api', api.sayHello);
 var port = Number(process.env.PORT || 3000);
 
 app.listen(port);
-logger.log('info', 'Listening on port ' + port + '...');
+console.log('info', 'Listening on port ' + port + '...');
