@@ -19,4 +19,4 @@ exports.getCountry = function (req, resp) {
         }
         winston.profile('getCountry');
     });
-}
+};

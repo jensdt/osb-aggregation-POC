@@ -1,10 +1,10 @@
-require('./db');
+require('./src/db');
 
 var express = require('express'),
     bodyParser = require('body-parser'),
-    countries = require('./routes/countries'),
+    countries = require('./src/routes/countries'),
     winston = require("winston"),
-    nmscs = require('./routes/nmscs');
+    nmscs = require('./src/routes/nmscs');
 
 winston.handleExceptions(new winston.transports.Console);
 

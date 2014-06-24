@@ -6,10 +6,10 @@ var mongoose = require('mongoose'),
 var Nmsc = mongoose.model('Nmsc');
 
 exports.findAll = function (req, res) {
-    winston.profile('findAllNmscs')
+    winston.profile('findAllNmscs');
     Nmsc.find(function (err, nmscs, count) {
         res.send(nmscs);
-        winston.profile('findAllNmscs')
+        winston.profile('findAllNmscs');
     });
 };
 
@@ -52,9 +52,9 @@ var saveNmsc = function (nmsc, res) {
     nmsc.save(function (err, nmsc, count) {
         res.redirect('/nmscs');
     });
-}
+};
 
 var bindReqParams = function (req, nmsc) {
     nmsc.name = req.body.name;
     nmsc.code = req.body.code;
-}
+};

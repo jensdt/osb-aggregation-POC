@@ -1,18 +1,22 @@
 {
-    "name": "osb-aggregation-poc",
-    "description": "OSB Aggregation POC",
-    "main": "server.js",
-    "version": "0.0.1",
-    "private": true,
-    "dependencies": {
-        "express": "4.x",
-        "mongoose": "3.8.x",
-        "body-parser": "1.4.3",
-        "restify": "2.8.1",
-        "winston": "0.7.3",
-        "osb-api":"git+https://d0596de04f76dcde1d3b51ad3d263aa2f9356629:x-oauth-basic@github.com/roexber/osb-api-poc.git"
-    },
-    "engines": {
-        "node": "0.10.x"
-    }
+  "name": "osb-aggregation-poc",
+  "description": "OSB Aggregation POC",
+  "main": "server.js",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "4.x",
+    "mongoose": "3.8.x",
+    "body-parser": "1.4.3",
+    "restify": "2.8.1",
+    "winston": "0.7.3",
+    "osb-api": "git+https://d0596de04f76dcde1d3b51ad3d263aa2f9356629:x-oauth-basic@github.com/roexber/osb-api-poc.git"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "~0.10.0"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
 }
