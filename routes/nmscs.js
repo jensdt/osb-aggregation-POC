@@ -5,25 +5,11 @@ var mongoose = require('mongoose'),
     winston = require('winston');
 var Nmsc = mongoose.model('Nmsc');
 
-
-var timings = new (winston.Logger)({
-    transports: [
-        new (winston.transports.File)({ filename: 'logs/timings.log' })
-    ]
-});
-
-var logger = new (winston.Logger)({
-    transports: [
-        new (winston.transports.Console)(),
-        new (winston.transports.File)({ filename: 'logs/osb-aggregation.log' })
-    ]
-});
-
 exports.findAll = function (req, res) {
-    timings.profile('findAllNmscs')
+    winston.profile('findAllNmscs')
     Nmsc.find(function (err, nmscs, count) {
         res.send(nmscs);
-        timings.profile('findAllNmscs')
+        winston.profile('findAllNmscs')
     });
 };
 
@@ -34,8 +20,8 @@ exports.findById = function (req, res) {
 };
 
 exports.addNmsc = function (req, res) {
-    logger.log('POST: ' + req.body);
-    logger.log(req.body);
+    winston.log('POST: ' + req.body);
+    winston.log(req.body);
 
     var nmsc = new Nmsc();
     bindReqParams(req, nmsc);
@@ -43,8 +29,8 @@ exports.addNmsc = function (req, res) {
 };
 
 exports.updateNmsc = function (req, res) {
-    logger.log('PUT: ' + req.body);
-    logger.log(req.body);
+    winston.log('PUT: ' + req.body);
+    winston.log(req.body);
 
     Nmsc.findById(req.params.id, function (err, nmsc) {
         bindReqParams(req, nmsc);
@@ -53,7 +39,7 @@ exports.updateNmsc = function (req, res) {
 };
 
 exports.deleteNmsc = function (req, res) {
-    logger.log('DELETE:' + req.params.id);
+    winston.log('DELETE:' + req.params.id);
 
     Nmsc.findById(req.params.id, function (err, nmsc) {
         nmsc.remove(function (err, nmsc) {
