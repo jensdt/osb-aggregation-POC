@@ -3,8 +3,7 @@ require('./db');
 var express = require('express'),
     bodyParser = require('body-parser'),
     countries = require('./routes/countries'),
-    nmscs = require('./routes/nmscs'),
-    api = require('osb-api');
+    nmscs = require('./routes/nmscs');
 
 var app = express();
 
@@ -19,7 +18,8 @@ app.delete('/nmscs/:id', nmscs.deleteNmsc);
 
 app.get('/countries/:id', countries.getCountry);
 
-app.get('/api', api.sayHello);
+/*var api = require('osb-api');
+app.get('/api', api.sayHello);*/
 
 var port = Number(process.env.PORT || 3000);
 
