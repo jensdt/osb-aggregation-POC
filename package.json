@@ -8,10 +8,10 @@
         "express": "4.x",
         "mongoose": "3.8.x",
         "body-parser": "1.4.3",
-        "restify": "2.8.1"
+        "restify": "2.8.1",
+        "osb-api":"git+https://d0596de04f76dcde1d3b51ad3d263aa2f9356629:x-oauth-basic@github.com/roexber/osb-api-poc.git"
     },
     "engines": {
         "node": "0.10.x"
-    },
-    "_from":"git+https://d0596de04f76dcde1d3b51ad3d263aa2f9356629:x-oauth-basic@github.com/roexber/osb-api-poc.git"
+    }
 }
