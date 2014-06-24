@@ -20,6 +20,11 @@ var app = express();
 // parse application/json
 app.use(bodyParser.json());
 
+app.get("/", function(req, res){
+    res.writeHead(200, {"Content-Type": "text/plain"});
+    res.end("OSB Aggregation POC");
+});
+
 app.get('/nmscs', nmscs.findAll);
 app.get('/nmscs/:id', nmscs.findById);
 app.post('/nmscs', nmscs.addNmsc);
