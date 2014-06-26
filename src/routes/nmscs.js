@@ -14,8 +14,8 @@ exports.findAll = function (req, res) {
 };
 
 exports.findById = function (req, res) {
-    Nmsc.findById(req.params.id, function (err, nmsc) {
-        res.send(nmsc);
+    Nmsc.findById(1, function (err, nmsc) {
+        callback();
     });
 };
 
@@ -58,3 +58,9 @@ var bindReqParams = function (req, nmsc) {
     nmsc.name = req.body.name;
     nmsc.code = req.body.code;
 };
+
+exports.getNmsc = function(nmscId, callback) {
+    Nmsc.findById(nmscId, function (err, nmsc) {
+        callback(null, nmsc);
+    });
+}

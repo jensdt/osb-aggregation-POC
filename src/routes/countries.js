@@ -20,3 +20,9 @@ exports.getCountry = function (req, resp) {
         winston.profile('getCountry');
     });
 };
+
+exports.getNmscCountry = function (nmscId, callback) {
+    client.get('/country/1', function (err, req, res, country) {
+        callback(null, country);
+    });
+};

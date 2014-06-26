@@ -5,7 +5,8 @@ var express = require('express'),
     winston = require("winston"),
     countries = require('./src/routes/countries'),
     nmscs = require('./src/routes/nmscs'),
-    dealers = require('./src/routes/dealers');
+    dealers = require('./src/routes/dealers'),
+    async = require('async');
 
 winston.handleExceptions(new winston.transports.Console);
 
@@ -14,7 +15,7 @@ var app = express();
 // parse application/json
 app.use(bodyParser.json());
 
-app.get("/", function(req, res){
+app.get("/", function (req, res) {
     res.writeHead(200, {"Content-Type": "text/plain"});
     res.end("OSB Aggregation POC");
 });
@@ -29,6 +30,22 @@ app.get('/countries/:id', countries.getCountry);
 
 app.get('/dealers/:id', dealers.getDealer);
 app.get('/dealers/:id/dealerships', dealers.getDealerships);
+
+app.get('/async/:id', function (req, res) {
+    winston.profile('asyncParallel');
+    async.parallel({
+            nmsc: function (callback) {
+                nmscs.getNmsc("53a7e120fb2039ef7e533000", callback);
+            },
+            country: function (callback) {
+                countries.getNmscCountry("53a7e120fb2039ef7e533000", callback);
+            }
+        },
+        function (err, results) {
+            res.send(results);
+            winston.profile('asyncParallel');
+        });
+});
 
 var api = require('osb-api');
 app.get('/api', api.sayHello);
