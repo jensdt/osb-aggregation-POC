@@ -2,9 +2,10 @@ require('./src/db');
 
 var express = require('express'),
     bodyParser = require('body-parser'),
-    countries = require('./src/routes/countries'),
     winston = require("winston"),
-    nmscs = require('./src/routes/nmscs');
+    countries = require('./src/routes/countries'),
+    nmscs = require('./src/routes/nmscs'),
+    dealers = require('./src/routes/dealers');
 
 winston.handleExceptions(new winston.transports.Console);
 
@@ -25,6 +26,9 @@ app.put('/nmscs/:id', nmscs.updateNmsc);
 app.delete('/nmscs/:id', nmscs.deleteNmsc);
 
 app.get('/countries/:id', countries.getCountry);
+
+app.get('/dealers/:id', dealers.getDealer);
+app.get('/dealers/:id/dealerships', dealers.getDealerships);
 
 var api = require('osb-api');
 app.get('/api', api.sayHello);
