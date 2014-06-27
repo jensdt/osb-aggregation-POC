@@ -15,7 +15,7 @@ exports.findAll = function (req, res) {
 
 exports.findById = function (req, res) {
     Nmsc.findById(1, function (err, nmsc) {
-        callback();
+        res.send(nmsc);
     });
 };
 
@@ -59,9 +59,9 @@ var bindReqParams = function (req, nmsc) {
     nmsc.code = req.body.code;
 };
 
-exports.getNmsc = function(nmscId, callback) {
-    Nmsc.findById(nmscId, function (err, nmsc) {
+exports.getNmsc = function (nmscId, callback) {
+    Nmsc.findById(nmscId).lean().exec(function (err, nmsc) {
         winston.log('info', 'mongoose nmsc:' + nmsc);
         callback(null, nmsc);
     });
-}
+};
