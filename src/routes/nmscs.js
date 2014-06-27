@@ -61,6 +61,7 @@ var bindReqParams = function (req, nmsc) {
 
 exports.getNmsc = function(nmscId, callback) {
     Nmsc.findById(nmscId, function (err, nmsc) {
+        winston.log('info', 'mongoose nmsc:' + nmsc);
         callback(null, nmsc);
     });
 }

@@ -6,7 +6,7 @@ var express = require('express'),
     countries = require('./src/routes/countries'),
     nmscs = require('./src/routes/nmscs'),
     dealers = require('./src/routes/dealers'),
-    async = require('async');
+    aggregate = require('./src/routes/aggregate');
 
 winston.handleExceptions(new winston.transports.Console);
 
@@ -31,21 +31,7 @@ app.get('/countries/:id', countries.getCountry);
 app.get('/dealers/:id', dealers.getDealer);
 app.get('/dealers/:id/dealerships', dealers.getDealerships);
 
-app.get('/async/:id', function (req, res) {
-    winston.profile('asyncParallel');
-    async.parallel({
-            nmsc: function (callback) {
-                nmscs.getNmsc("53a7e120fb2039ef7e533000", callback);
-            },
-            country: function (callback) {
-                countries.getNmscCountry("53a7e120fb2039ef7e533000", callback);
-            }
-        },
-        function (err, results) {
-            res.send(results);
-            winston.profile('asyncParallel');
-        });
-});
+app.get('/async/:id', aggregate.getNmscWithCountryAsync);
 
 var api = require('osb-api');
 app.get('/api', api.sayHello);
