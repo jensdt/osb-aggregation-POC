@@ -2,12 +2,12 @@ require('./src/db');
 
 var express = require('express'),
     bodyParser = require('body-parser'),
+    url = require('url'),
     winston = require("winston"),
     countries = require('./src/routes/countries'),
     nmscs = require('./src/routes/nmscs'),
     dealers = require('./src/routes/dealers'),
-    aggregate = require('./src/routes/aggregate'),
-    url = require('url');
+    aggregate = require('./src/routes/aggregate');
 
 exports.app = app = express();
 
