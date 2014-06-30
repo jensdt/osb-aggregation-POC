@@ -39,8 +39,8 @@ var api = require('osb-api');
 app.get('/api', api.sayHello);
 
 var enableDocs = process.env.ENABLE_DOCS;
-winston.log('info', enableDocs + "=" + enableDocs === true)
-if (enableDocs !== undefined && enableDocs === true) {
+winston.log('info', enableDocs);
+if (enableDocs !== undefined) {
     require("./docs/generate-docs.js");
 
     // Serve up swagger ui at /docs via static route
