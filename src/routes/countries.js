@@ -14,7 +14,7 @@ exports.getCountry = function (req, resp) {
         if (err) {
             winston.log("An error ocurred:", err);
         } else {
-            winston.log('GET     /country/' + countryId + ' returned: %j', country);
+            winston.log('GET     /api/countries/' + countryId + ' returned: %j', country);
             resp.send(country);
         }
         winston.profile('getCountry');
@@ -22,7 +22,7 @@ exports.getCountry = function (req, resp) {
 };
 
 exports.getNmscCountry = function (nmscId, callback) {
-    client.get('/country/1', function (err, req, res, country) {
+    client.get('/api/countries/1', function (err, req, res, country) {
         callback(null, country);
     });
 };
