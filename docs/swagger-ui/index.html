@@ -24,9 +24,8 @@
 
   <script type="text/javascript">
     $(function () {
-        var swaggerUrl = document.URL;
-        swaggerUrl = swaggerUrl.substring(0, swaggerUrl.lastIndexOf("/"));
-        alert(swaggerUrl);
+        var swaggerUrl = document.URL.substring(0, document.URL.lastIndexOf('/'));
+        console.log(swaggerUrl);
       window.swaggerUi = new SwaggerUi({
       url: swaggerUrl + "/api-docs",
       dom_id: "swagger-ui-container",
