@@ -51,7 +51,11 @@ swagger.addGet({
 
 //Configures the app's base path and api version.
 swagger.configureSwaggerPaths("", "api-docs", "");
-swagger.configure("http://localhost:3000", "1.0.0");
+
+var swaggerUri = process.env.SWAGGER_URI ||
+    'http://localhost:3000';
+
+swagger.configure(swaggerUri, "1.0.0");
 swagger.configureDeclaration('nmscs', {
     description: 'Operations about Nmscs'
 });
