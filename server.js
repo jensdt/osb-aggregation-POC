@@ -39,6 +39,7 @@ var api = require('osb-api');
 app.get('/api', api.sayHello);
 
 var enableDocs = process.env.ENABLE_DOCS;
+winston.log('info', enableDocs + "=" + enableDocs === true)
 if (enableDocs !== undefined && enableDocs === true) {
     require("./docs/generate-docs.js");
 
