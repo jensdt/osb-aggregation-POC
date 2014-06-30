@@ -38,9 +38,8 @@ app.get('/async/:id', aggregate.getNmscWithCountryAsync);
 var api = require('osb-api');
 app.get('/api', api.sayHello);
 
-var enableDocs = process.env.ENABLE_DOCS;
-winston.log('info', enableDocs);
-if (enableDocs !== undefined && enableDocs === "true") {
+var enableDocs = process.env.SWAGGER_URI;
+if (enableDocs !== undefined) {
     require("./docs/generate-docs.js");
 
     // Serve up swagger ui at /docs via static route
