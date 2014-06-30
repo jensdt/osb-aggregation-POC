@@ -40,7 +40,7 @@ app.get('/api', api.sayHello);
 
 var enableDocs = process.env.ENABLE_DOCS;
 winston.log('info', enableDocs);
-if (enableDocs !== undefined) {
+if (enableDocs !== undefined && enableDocs === "true") {
     require("./docs/generate-docs.js");
 
     // Serve up swagger ui at /docs via static route
