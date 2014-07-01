@@ -21,4 +21,4 @@ exports.getNmscWithCountryAsync = function (req, res) {
             res.send(results.nmsc);
             winston.profile('asyncParallel');
         });
-}
+};

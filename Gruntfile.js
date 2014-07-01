@@ -12,11 +12,21 @@ module.exports = function(grunt) {
                     document: true
                 }
             }
+        }, simplemocha: {
+            options: {
+                globals: ['expect'],
+                timeout: 3000,
+                ignoreLeaks: false,
+                ui: 'bdd',
+                reporter: 'spec'
+            },
+            all: { src: ['test/*.js'] }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-simple-mocha');
 
-    grunt.registerTask('test', ['jshint']);
+    grunt.registerTask('test', ['jshint', 'simplemocha']);
 
 };
