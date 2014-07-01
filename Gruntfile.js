@@ -4,7 +4,7 @@ module.exports = function (grunt) {
         express: {
             options: {
                 // Override defaults here
-                delay: 100,
+                delay: 50
             },
             dev: {
                 options: {
@@ -51,6 +51,13 @@ module.exports = function (grunt) {
                 reporter: 'spec'
             },
             all: { src: ['test/**/*.js'] }
+        }, open: {
+            server: {
+                path: 'http://localhost:3000',
+                options: {
+                    delay: 100
+                }
+            }
         },
         parallel: {
             runAndTest: {
@@ -65,6 +72,10 @@ module.exports = function (grunt) {
                     {
                         grunt: true,
                         args: ['watch:test']
+                    },
+                    {
+                        grunt: true,
+                        args: ['open:server']
                     }
                 ]
             }
