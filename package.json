@@ -24,6 +24,7 @@
     "grunt-open": "^0.2.3",
     "grunt-parallel": "^0.3.1",
     "grunt-simple-mocha": "^0.4.0",
+    "grunt-wait": "^0.1.0",
     "load-grunt-tasks": "^0.6.0",
     "mocha": "^1.20.1",
     "supertest": "^0.13.0"

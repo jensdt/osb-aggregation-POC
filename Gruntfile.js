@@ -4,12 +4,7 @@ module.exports = function (grunt) {
         express: {
             options: {
                 // Override defaults here
-                delay: 50
-            },
-            dev: {
-                options: {
-                    script: 'server.js'
-                }
+                delay: 10
             },
             web: {
                 options: {
@@ -51,40 +46,40 @@ module.exports = function (grunt) {
                 reporter: 'spec'
             },
             all: { src: ['test/**/*.js'] }
+        }, wait: { // wait is used to make sure express app is up and running before open
+            options: {
+                delay: 2000
+            },
+            pause: {
+                options: {
+                    before : function(options) {
+                        console.log('pausing %dms', options.delay);
+                    },
+                    after : function() {
+                        console.log('pause end');
+                    }
+                }
+            }
         }, open: {
             server: {
-                path: 'http://localhost:3000',
-                options: {
-                    delay: 100
-                }
+                path: 'http://localhost:3000'
             }
         },
         parallel: {
-            runAndTest: {
+            dev: {
                 options: {
-                    stream: true
+                    stream: true,
+                    grunt: true
                 },
-                tasks: [
-                    {
-                        grunt: true,
-                        args: ['watch:app']
-                    },
-                    {
-                        grunt: true,
-                        args: ['watch:test']
-                    },
-                    {
-                        grunt: true,
-                        args: ['open:server']
-                    }
-                ]
+                tasks: ['watch:app', 'watch:test', "doshow"]
             }
         }
     });
 
     require('load-grunt-tasks')(grunt);
 
+    grunt.registerTask('doshow', ['wait:pause', 'open:server']);
     grunt.registerTask('test', ['jshint', 'simplemocha']);
-    grunt.registerTask('default', ['parallel:runAndTest']);
+    grunt.registerTask('default', ['parallel:dev']);
 
 };
