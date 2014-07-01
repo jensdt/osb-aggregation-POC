@@ -29,9 +29,7 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-simple-mocha');
+    require('load-grunt-tasks')(grunt);
 
     grunt.registerTask('test', ['jshint', 'simplemocha']);
     grunt.registerTask('default', ['watch']);
