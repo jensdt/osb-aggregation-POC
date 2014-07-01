@@ -2,8 +2,10 @@
  * Created by roexber on 1/07/14.
  */
 var request = require("supertest"),
-    app = require("../server").app,
+    app = require("../src/app").app,
     assert = require("chai").assert;
+
+app.listen(3001);
 
 it("should return a 200 response", function (done) {
     request(app)

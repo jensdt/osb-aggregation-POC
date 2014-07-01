@@ -1,18 +1,5 @@
-require('./src/db');
-
-var express = require('express'),
-    bodyParser = require('body-parser'),
-    url = require('url'),
+var app = require("./src/app").app,
     winston = require("winston");
-
-exports.app = app = express();
-
-winston.handleExceptions(new winston.transports.Console());
-
-// parse application/json
-app.use(bodyParser.json());
-
-require("./src/routes");
 
 var enableDocs = process.env.SWAGGER_URI;
 if (enableDocs !== undefined) {
