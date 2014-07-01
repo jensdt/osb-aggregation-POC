@@ -11,7 +11,7 @@ var express = require('express'),
 
 exports.app = app = express();
 
-winston.handleExceptions(new winston.transports.Console);
+winston.handleExceptions(new winston.transports.Console());
 
 // parse application/json
 app.use(bodyParser.json());

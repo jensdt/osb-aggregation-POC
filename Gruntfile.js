@@ -1,8 +1,13 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        jshint: {
-            files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
+        watch: {
+            javascript: {
+                files: ["Gruntfile.js", "package.json", "server.js", 'src/**/*.js', 'test/**/*.js'],
+                tasks: "test"
+            }
+        }, jshint: {
+            files: ['Gruntfile.js', 'server.js', 'src/**/*.js', 'test/**/*.js'],
             options: {
                 // options here to override JSHint defaults
                 globals: {
@@ -20,13 +25,15 @@ module.exports = function(grunt) {
                 ui: 'bdd',
                 reporter: 'spec'
             },
-            all: { src: ['test/*.js'] }
+            all: { src: ['test/**/*.js'] }
         }
     });
 
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-simple-mocha');
 
     grunt.registerTask('test', ['jshint', 'simplemocha']);
+    grunt.registerTask('default', ['watch']);
 
 };
